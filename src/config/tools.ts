@@ -1,0 +1,112 @@
+import {
+  FileText,
+  FileImage,
+  Braces,
+  ImageDown,
+} from 'lucide-react';
+import type { ToolConfig, ToolCategory, CategoryInfo } from '@/types';
+
+export const toolConfigs: ToolConfig[] = [
+  {
+    id: 'word-counter',
+    title: 'Word Counter',
+    description:
+      'Count words, characters, sentences, and paragraphs in your text instantly.',
+    category: 'text',
+    tags: ['text', 'words', 'counter', 'writing'],
+    icon: FileText,
+    route: '/tools/word-counter',
+    componentLoader: () => import('@/tools/word-counter'),
+    popular: true,
+  },
+  {
+    id: 'pdf-to-image',
+    title: 'PDF to Image',
+    description:
+      'Convert PDF pages to high-quality images. All processing done locally.',
+    category: 'pdf',
+    tags: ['pdf', 'image', 'convert', 'extract'],
+    icon: FileImage,
+    route: '/tools/pdf-to-image',
+    componentLoader: () => import('@/tools/pdf-to-image'),
+    popular: true,
+  },
+  {
+    id: 'json-formatter',
+    title: 'JSON Formatter',
+    description: 'Format, validate, and beautify your JSON data with ease.',
+    category: 'developer',
+    tags: ['json', 'format', 'validate', 'developer', 'code'],
+    icon: Braces,
+    route: '/tools/json-formatter',
+    componentLoader: () => import('@/tools/json-formatter'),
+    popular: true,
+  },
+  {
+    id: 'image-compressor',
+    title: 'Image Compressor',
+    description:
+      'Compress images without losing quality. Your files stay on your device.',
+    category: 'image',
+    tags: ['image', 'compress', 'optimize', 'reduce'],
+    icon: ImageDown,
+    route: '/tools/image-compressor',
+    componentLoader: () => import('@/tools/image-compressor'),
+    popular: true,
+  },
+];
+
+export const categoryLabels: Record<ToolCategory, string> = {
+  pdf: 'PDF',
+  image: 'Image',
+  text: 'Text',
+  developer: 'Developer',
+  ai: 'AI',
+  utilities: 'Utilities',
+  design: 'Design',
+};
+
+export const getCategoryInfo = (): CategoryInfo[] => {
+  const counts: Record<ToolCategory, number> = {
+    pdf: 0,
+    image: 0,
+    text: 0,
+    developer: 0,
+    ai: 0,
+    utilities: 0,
+    design: 0,
+  };
+
+  toolConfigs.forEach((tool) => {
+    counts[tool.category]++;
+  });
+
+  return Object.entries(counts)
+    .filter(([_, count]) => count > 0)
+    .map(([id, count]) => ({
+      id: id as ToolCategory,
+      label: categoryLabels[id as ToolCategory],
+      count,
+    }));
+};
+
+export const getPopularTools = (): ToolConfig[] =>
+  toolConfigs.filter((tool) => tool.popular);
+
+export const getToolById = (id: string): ToolConfig | undefined =>
+  toolConfigs.find((tool) => tool.id === id);
+
+export const searchTools = (query: string): ToolConfig[] => {
+  const lowerQuery = query.toLowerCase().trim();
+  if (!lowerQuery) return toolConfigs;
+
+  return toolConfigs.filter(
+    (tool) =>
+      tool.title.toLowerCase().includes(lowerQuery) ||
+      tool.description.toLowerCase().includes(lowerQuery) ||
+      tool.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
+  );
+};
+
+export const getToolsByCategory = (category: ToolCategory): ToolConfig[] =>
+  toolConfigs.filter((tool) => tool.category === category);
