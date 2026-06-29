@@ -1,7 +1,8 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { PageLayout, ToolLayout } from '@/layouts';
 import { getToolById } from '@/config/tools';
-import { Suspense, lazy, ComponentType } from 'react';
+import { Suspense, lazy } from "react";
+import type { ComponentType } from "react";
 
 export default function ToolPage() {
   const { toolId } = useParams<{ toolId: string }>();
