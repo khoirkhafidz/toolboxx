@@ -1,6 +1,40 @@
+import { useState } from 'react';
 import { Braces } from 'lucide-react';
 
 export default function JsonFormatter() {
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [error, setError] = useState('');
+  function handleFormat() {
+   if (!input.trim()) {
+    setOutput('');
+    setError('');
+    return;
+  }
+  try {
+    const parsed = JSON.parse(input);
+    setOutput(JSON.stringify(parsed, null, 2));
+    setError('');
+  } catch (err) {
+    setOutput('');
+    setError(err instanceof Error ? err.message : 'Invalid JSON');
+  }
+}
+  function handleMinify() {
+  try {
+    const parsed = JSON.parse(input);
+    setOutput(JSON.stringify(parsed));
+    setError('');
+  } catch (err) {
+    setOutput('');
+    setError(err instanceof Error ? err.message : 'Invalid JSON');
+  }
+}
+  async function handleCopy() {
+  if (!output) return;
+
+  await navigator.clipboard.writeText(output);
+}
   return (
     <div className="space-y-6">
       <div className="grid gap-6 lg:grid-cols-2">
@@ -9,8 +43,10 @@ export default function JsonFormatter() {
             Input JSON
           </label>
           <textarea
-            id="json-input"
-            placeholder='{"paste": "your json here"}'
+             id="json-input"
+             value={input}
+             onChange={(e) => setInput(e.target.value)}
+             placeholder='{"paste": "your json here"}'
             className="min-h-[300px] w-full rounded-lg border border-input bg-transparent px-4 py-3 font-mono text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
         </div>
@@ -20,6 +56,7 @@ export default function JsonFormatter() {
           </label>
           <textarea
             id="json-output"
+            value={output}
             readOnly
             placeholder="Formatted JSON will appear here..."
             className="min-h-[300px] w-full rounded-lg border border-input bg-muted/50 px-4 py-3 font-mono text-sm placeholder:text-muted-foreground"
@@ -28,15 +65,20 @@ export default function JsonFormatter() {
       </div>
 
       <div className="flex gap-3">
-        <button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+        <button onClick={handleFormat} className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
           Format
         </button>
-        <button className="rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+        <button onClick={handleMinify} className="rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
           Minify
         </button>
-        <button className="rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+        <button onClick={handleCopy} className="rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
           Copy
         </button>
+        {error && (
+        <p className="text-sm text-destructive">
+        {error}
+        </p>
+        )}
       </div>
     </div>
   );
