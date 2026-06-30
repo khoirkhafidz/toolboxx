@@ -54,6 +54,18 @@ export const toolConfigs: ToolConfig[] = [
     componentLoader: () => import('@/tools/image-compressor'),
     popular: true,
   },
+  {
+  id: 'image-to-pdf',
+  title: 'Image to PDF',
+  description:
+    'Convert JPG, PNG, and WEBP images into a single PDF. Your files stay on your device.',
+  category: 'image',
+  tags: ['image', 'pdf', 'convert', 'jpg', 'png', 'webp'],
+  icon: FileImage,
+  route: '/tools/image-to-pdf',
+  componentLoader: () => import('@/tools/image-to-pdf'),
+  popular: true,
+  },
 ];
 
 export const categoryLabels: Record<ToolCategory, string> = {
