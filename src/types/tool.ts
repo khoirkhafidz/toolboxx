@@ -5,6 +5,7 @@ export type ToolCategory =
   | 'image'
   | 'text'
   | 'developer'
+  | 'academic'
   | 'ai'
   | 'utilities'
   | 'design';

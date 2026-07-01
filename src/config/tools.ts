@@ -66,6 +66,17 @@ export const toolConfigs: ToolConfig[] = [
   componentLoader: () => import('@/tools/image-to-pdf'),
   popular: true,
   },
+  {
+  id: 'citation-generator',
+  title: 'Citation Generator',
+  description: 'Generate APA, MLA, IEEE, and Chicago citations.',
+  category: 'academic',
+  tags: ['citation', 'apa', 'mla', 'ieee'],
+  icon: FileText,
+  route: '/tools/citation-generator',
+  componentLoader: () => import('@/tools/citation-generator'),
+  popular: false,
+  },
 ];
 
 export const categoryLabels: Record<ToolCategory, string> = {
@@ -76,6 +87,7 @@ export const categoryLabels: Record<ToolCategory, string> = {
   ai: 'AI',
   utilities: 'Utilities',
   design: 'Design',
+  academic: 'Academic',
 };
 
 export const getCategoryInfo = (): CategoryInfo[] => {
@@ -87,6 +99,7 @@ export const getCategoryInfo = (): CategoryInfo[] => {
     ai: 0,
     utilities: 0,
     design: 0,
+    academic: 0,
   };
 
   toolConfigs.forEach((tool) => {
