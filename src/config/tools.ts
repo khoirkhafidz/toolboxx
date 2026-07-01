@@ -3,6 +3,7 @@ import {
   FileImage,
   Braces,
   ImageDown,
+  GraduationCap
 } from 'lucide-react';
 import type { ToolConfig, ToolCategory, CategoryInfo } from '@/types';
 
@@ -77,6 +78,25 @@ export const toolConfigs: ToolConfig[] = [
   componentLoader: () => import('@/tools/citation-generator'),
   popular: false,
   },
+  {
+  id: "bibliography-alphabetizer",
+  title: "Bibliography Alphabetizer",
+  description:
+    "Sort bibliography or reference lists alphabetically in seconds.",
+  category: "academic",
+  tags: [
+    "bibliography",
+    "reference",
+    "citation",
+    "sort",
+    "alphabet"
+  ],
+  icon: GraduationCap,
+  route: "/tools/bibliography-alphabetizer",
+  componentLoader: () =>
+    import("@/tools/bibliography-alphabetizer"),
+  popular: true,
+},
 ];
 
 export const categoryLabels: Record<ToolCategory, string> = {
