@@ -97,6 +97,24 @@ export const toolConfigs: ToolConfig[] = [
     import("@/tools/bibliography-alphabetizer"),
   popular: true,
 },
+  {
+  id: "doi-to-citation",
+  title: "DOI to Citation",
+  description:
+    "Generate citations from a DOI using Crossref metadata.",
+  category: "academic",
+  tags: [
+    "doi",
+    "citation",
+    "crossref",
+    "journal",
+    "academic"
+  ],
+  icon: GraduationCap,
+  route: "/tools/doi-to-citation",
+  componentLoader: () => import("@/tools/doi-to-citation"),
+  popular: true,
+},
 ];
 
 export const categoryLabels: Record<ToolCategory, string> = {
