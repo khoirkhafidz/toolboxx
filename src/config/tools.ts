@@ -41,7 +41,7 @@ export const toolConfigs: ToolConfig[] = [
     icon: Braces,
     route: '/tools/json-formatter',
     componentLoader: () => import('@/tools/json-formatter'),
-    popular: true,
+    popular: false,
   },
   {
     id: 'image-compressor',
@@ -76,7 +76,7 @@ export const toolConfigs: ToolConfig[] = [
   icon: FileText,
   route: '/tools/citation-generator',
   componentLoader: () => import('@/tools/citation-generator'),
-  popular: false,
+  popular: true,
   },
   {
   id: "bibliography-alphabetizer",
@@ -113,6 +113,23 @@ export const toolConfigs: ToolConfig[] = [
   icon: GraduationCap,
   route: "/tools/doi-to-citation",
   componentLoader: () => import("@/tools/doi-to-citation"),
+  popular: true,
+},
+{
+  id: "merge-pdf",
+  title: "Merge PDF",
+  description:
+    "Merge multiple PDF files into a single document.",
+  category: "pdf",
+  tags: [
+    "pdf",
+    "merge",
+    "combine",
+    "document"
+  ],
+  icon: FileImage,
+  route: "/tools/merge-pdf",
+  componentLoader: () => import("@/tools/merge-pdf"),
   popular: true,
 },
 ];
