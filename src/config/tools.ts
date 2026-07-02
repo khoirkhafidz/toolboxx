@@ -4,7 +4,8 @@ import {
   Braces,
   ImageDown,
   Scissors,
-  GraduationCap
+  GraduationCap,
+  QrCode,
 } from 'lucide-react';
 import type { ToolConfig, ToolCategory, CategoryInfo } from '@/types';
 
@@ -150,6 +151,25 @@ export const toolConfigs: ToolConfig[] = [
   route: "/tools/split-pdf",
   componentLoader: () =>
     import("@/tools/split-pdf"),
+  popular: true,
+},
+{
+  id: "qr-code-generator",
+  title: "QR Code Generator",
+  description:
+    "Generate QR codes from text or URLs instantly.",
+  category: "utilities",
+  tags: [
+    "qr",
+    "qrcode",
+    "generator",
+    "url",
+    "text"
+  ],
+  icon: QrCode,
+  route: "/tools/qr-code-generator",
+  componentLoader: () =>
+    import("@/tools/qr-code-generator"),
   popular: true,
 },
 ];
