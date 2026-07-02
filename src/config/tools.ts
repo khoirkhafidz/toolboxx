@@ -3,6 +3,7 @@ import {
   FileImage,
   Braces,
   ImageDown,
+  Scissors,
   GraduationCap
 } from 'lucide-react';
 import type { ToolConfig, ToolCategory, CategoryInfo } from '@/types';
@@ -18,7 +19,7 @@ export const toolConfigs: ToolConfig[] = [
     icon: FileText,
     route: '/tools/word-counter',
     componentLoader: () => import('@/tools/word-counter'),
-    popular: true,
+    popular: false,
   },
   {
     id: 'pdf-to-image',
@@ -130,6 +131,25 @@ export const toolConfigs: ToolConfig[] = [
   icon: FileImage,
   route: "/tools/merge-pdf",
   componentLoader: () => import("@/tools/merge-pdf"),
+  popular: true,
+},
+{
+  id: "split-pdf",
+  title: "Split PDF",
+  description:
+    "Extract a page range from a PDF into a new PDF file.",
+  category: "pdf",
+  tags: [
+    "pdf",
+    "split",
+    "extract",
+    "page",
+    "pages"
+  ],
+  icon: Scissors,
+  route: "/tools/split-pdf",
+  componentLoader: () =>
+    import("@/tools/split-pdf"),
   popular: true,
 },
 ];
