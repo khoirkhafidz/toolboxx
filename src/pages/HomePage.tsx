@@ -22,7 +22,7 @@ export default function HomePage() {
     <PageLayout>
       <div className="container py-12">
         <div className="mb-12 space-y-4 text-center">
-          <h1 className="text-4xl font-bold">Toolbox</h1>
+          <h1 className="text-4xl font-bold">Toolboxx</h1>
           <p className="text-lg text-muted-foreground">
             Free online tools that work entirely in your browser.
             <br />
