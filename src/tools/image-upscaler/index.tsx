@@ -294,22 +294,22 @@ object-contain"
 
     <button
       onClick={() => setScale(2)}
-      className={`rounded-md border px-4 py-2 text-sm transition ${
-        scale === 2
-          ? "bg-primary text-primary-foreground"
-          : "bg-background"
-      }`}
+  className={`rounded-md border px-4 py-2 text-sm transition-all duration-150 ease-out ${
+    scale === 2
+      ? "bg-primary text-primary-foreground"
+      : "bg-background hover:bg-accent hover:border-primary/40"
+  }`}
     >
       2×
     </button>
 
     <button
       onClick={() => setScale(4)}
-      className={`rounded-md border px-4 py-2 text-sm transition ${
-        scale === 4
-          ? "bg-primary text-primary-foreground"
-          : "bg-background"
-      }`}
+  className={`rounded-md border px-4 py-2 text-sm transition-all duration-150 ease-out ${
+    scale === 4
+      ? "bg-primary text-primary-foreground"
+      : "bg-background hover:bg-accent hover:border-primary/40"
+  }`}
     >
       4×
     </button>
