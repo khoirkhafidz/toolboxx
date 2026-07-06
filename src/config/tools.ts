@@ -6,6 +6,7 @@ import {
   Scissors,
   GraduationCap,
   QrCode,
+  ImageUp,
 } from 'lucide-react';
 import type { ToolConfig, ToolCategory, CategoryInfo } from '@/types';
 
@@ -171,6 +172,27 @@ export const toolConfigs: ToolConfig[] = [
   componentLoader: () =>
     import("@/tools/qr-code-generator"),
   popular: true,
+},
+{
+  id: "image-upscaler",
+  title: "Image Upscaler",
+  description:
+    "Resize images up to 2× or 4× directly in your browser using high-quality interpolation.",
+  category: "image",
+  tags: [
+    "image",
+    "upscale",
+    "upscaler",
+    "ai",
+    "enhance",
+    "resolution",
+    "photo"
+  ],
+  icon: ImageUp,
+  route: "/tools/image-upscaler",
+  componentLoader: () =>
+    import("@/tools/image-upscaler"),
+  popular: false,
 },
 ];
 
