@@ -194,6 +194,31 @@ export const toolConfigs: ToolConfig[] = [
     import("@/tools/image-upscaler"),
   popular: false,
 },
+{
+  id: "academic-text-cleaner",
+  title: "Academic Text Cleaner",
+  description:
+    "Clean copied text from PDFs, journals, research papers, and e-books while preserving paragraphs.",
+  category: "academic",
+  tags: [
+    "academic",
+    "text",
+    "cleaner",
+    "pdf",
+    "journal",
+    "research",
+    "ebook",
+    "formatting",
+    "copy",
+    "paste",
+    "paragraph"
+  ],
+  icon: GraduationCap,
+  route: "/tools/academic-text-cleaner",
+  componentLoader: () =>
+    import("@/tools/academic-text-cleaner"),
+  popular: true,
+},
 ];
 
 export const categoryLabels: Record<ToolCategory, string> = {
